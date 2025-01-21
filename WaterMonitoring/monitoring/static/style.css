@@ -1,0 +1,98 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f5f6;
+    color: #090909;
+}
+
+.bg-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Title Styling */
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 5px rgb(244, 247, 247);
+}
+
+.main-title.highlighted {
+    background-color: rgba(89, 127, 139, 0.7);
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+
+/* Login Page Background */
+body:first-of-type {
+    background: url('background.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Topics Page Background */
+body:nth-of-type(2) {
+    background: url('background.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body1:first-of-type {
+    background: url('real1.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+body:first-of-type {
+    background: url('bill1.webp') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Topics Page Styling */
+.topics-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    padding: 20px;
+}
+
+.topic-box {
+    background: #fff;
+    border-radius: 10px;
+    padding: 50px;
+    text-align: center;
+    width: 500px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.topic-box:hover {
+    transform: scale(1.15);
+}
+
+.topic-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.topic-box h2 {
+    font-size: 1.7rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.topic-box p {
+    font-size: 1rem;
+    color: #666;
+}

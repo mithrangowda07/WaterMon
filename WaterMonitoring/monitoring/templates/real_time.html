@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
+    <title>Water Monitoring System</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            min-height: 100vh;  
+        }
+        .main-container {
+            display: flex;
+            width: 100%;
+        }
+        .sidebar {
+            width: 20%;
+            background-color: rgb(165, 215, 229);
+            padding: 20px;
+            box-shadow: 2px 0 5px rgb(254, 255, 255);
+            height: 100%;
+        }
+        .sidebar h2 {
+            font-size: 24px;
+            color: #333;
+        }
+        .sidebar p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.5;
+        }
+        .content {
+            width: 80%;
+            padding: 20px;
+        }
+        .bg-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .topics-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 35px;
+        }
+        .topic-box {
+            max-width: 800px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            width: 75%;
+        }
+        .graphs-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 35px;
+        }
+        .container {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .subheader {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .caption {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 8px;
+        }       
+    </style>
+</head>
+
+<body1>
+    <div class="main-container">
+        <!-- Sidebar Section -->
+        <div class="sidebar">
+            <br>
+            <img src="{% static 'rvce_logo.jpg' %}" alt="Logo Picture" style="width: 95%;">
+            <br><br>
+            <h2>About the Creator</h2>
+            <p><strong>Name:</strong></p>
+            <p>Dhruthi D</p>
+            <p>Meghana J L</p>
+            <p>Mithra N Gowda</p>
+            <p>Poornashree H V</p>
+            <br>
+            <button onclick="window.location.href='/'" 
+            style="width: 100%; padding: 10px; margin-top: 20px; background-color: rgb(86, 139, 236); color: white; border: none; cursor: pointer; font-size: 16px;">
+                 🏡 Back to Home Page
+            </button>
+            <button onclick="window.location.href='/analysis_bill'" style="width: 100%; padding: 10px; margin-top: 20px; background-color: rgb(86, 139, 236); color: white; border: none; cursor: pointer; font-size: 16px;">
+                 📊 Analysis and Bill
+            </button>
+            <button onclick="window.location.href='/about_proj'" style="width: 100%; padding: 10px; margin-top: 20px; background-color:rgb(86, 139, 236); color: white; border: none; cursor: pointer; font-size: 16px;">
+                ℹ️ About the Project
+            </button>
+            <button onclick="window.location.href='https://forms.gle/zgGXupDmefJCMkHg7'" 
+            style="width: 100%; padding: 10px; margin-top: 20px; background-color: rgb(86, 139, 236); color: white; border: none; cursor: pointer; font-size: 16px;">
+                 📝 Review and Feedback
+            </button>
+        </div>
+        <div class="content">
+            <div class="bg-container">
+                <h1 class="main-title highlighted">Water Monitoring System</h1>
+            </div>
+            <div class="topics-container">
+                <div class="topic-box">
+                    <h2>Sensor Data</h2>
+                    <p>Total Water Flowed: {{ data|floatformat:3 }} Litres</p>
+                </div>
+                <div class="topic-box">
+                    {% comment %} <h2>Threshold Level</h2> {% endcomment %}
+                    <p>Threshold Level: <strong>5 Litres</strong></p>
+                    {% if flag == 1 %}
+                        <p style="color: rgb(242, 223, 80);">Threshold Level Exceeded!</p>
+                        <p>Alert sent to phone and email.</p>
+                    {% elif flag == 2 %}
+                        <p style="color: rgb(242, 80, 80);">You Used Double of Threshold!!!</p>
+                        <p>Alert sent to phone and email.</p>
+                    {% else %}
+                    <br><p style="color: rgb(39, 206, 17);">Threshold Level Not Exceeded</p>
+                    {% endif %}
+                </div>
+            </div>
+         
+            <div class="graphs-container">
+                <div class="container">
+                    <div class="subheader">Rate of Water Flow 📉</div>
+                    <div class="caption">This graph shows the real-time water flow rate over the past hour.</div>
+                    <iframe src="{{ flow_rate_graph_url }}" allowfullscreen></iframe>
+                </div>
+                <div class="container">
+                    <div class="subheader">Total Water Flow 📊</div>
+                    <div class="caption">This graph shows the total water usage over time.</div>
+                    <iframe src="{{ total_water_graph_url }}" allowfullscreen></iframe>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body1>
+</html>
